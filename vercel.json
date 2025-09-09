@@ -1,9 +1,6 @@
 {
   "version": 2,
   "name": "zeus-5-trading-bot",
-  "engines": {
-    "python": "3.9"
-  },
   "builds": [
     {
       "src": "backend/main.py",
