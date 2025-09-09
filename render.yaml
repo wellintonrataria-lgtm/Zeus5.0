@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: zeus-5-backend
+    env: python
+    plan: free
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHONPATH
+        value: /opt/render/project/src/backend
+      - key: PORT
+        value: 8000
+    healthCheckPath: /health
+
+  - type: web
+    name: zeus-5-frontend
+    env: node
+    plan: free
+    buildCommand: "cd frontend && npm install -g pnpm && pnpm install && pnpm run build"
+    startCommand: "cd frontend && pnpm run preview --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: zeus-5-backend
+          property: host
+    staticPublishPath: ./frontend/dist
+

@@ -1,0 +1,46 @@
+{
+  "name": "zeus-5-trading-bot",
+  "version": "5.0.0",
+  "description": "Robô de Trading Profissional baseado no Método Gorila 4.0",
+  "main": "backend/main.py",
+  "scripts": {
+    "dev": "concurrently \"cd backend && uvicorn main:app --reload --host 0.0.0.0 --port 8000\" \"cd frontend && pnpm run dev\"",
+    "build": "cd frontend && pnpm install && pnpm run build",
+    "start": "cd backend && uvicorn main:app --host 0.0.0.0 --port 8000",
+    "install-all": "cd backend && pip install -r requirements.txt && cd ../frontend && pnpm install",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "deploy:vercel": "vercel --prod",
+    "test:backend": "cd backend && python -m pytest",
+    "test:frontend": "cd frontend && pnpm run test",
+    "lint": "cd frontend && pnpm run lint"
+  },
+  "keywords": [
+    "trading",
+    "forex",
+    "bot",
+    "gorila",
+    "fastapi",
+    "react",
+    "technical-analysis"
+  ],
+  "author": "Zeus Trading Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/zeus-5-trading-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seu-usuario/zeus-5-trading-bot/issues"
+  },
+  "homepage": "https://github.com/seu-usuario/zeus-5-trading-bot#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.11.0"
+  }
+}
+
