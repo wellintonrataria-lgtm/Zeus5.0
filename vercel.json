@@ -1,20 +1,17 @@
 {
   "version": 2,
   "name": "zeus-5-trading-bot",
+  "engines": {
+    "python": "3.9"
+  },
   "builds": [
     {
       "src": "backend/main.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "use": "@vercel/python"
     },
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "src": "frontend/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -26,14 +23,6 @@
       "src": "/(.*)",
       "dest": "frontend/$1"
     }
-  ],
-  "env": {
-    "PYTHONPATH": "backend"
-  },
-  "functions": {
-    "backend/main.py": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
 
